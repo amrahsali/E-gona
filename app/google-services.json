@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "805417165023",
+    "firebase_url": "https://e-gona-app-default-rtdb.firebaseio.com",
+    "project_id": "e-gona-app",
+    "storage_bucket": "e-gona-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805417165023:android:4e54250809da8eb587c96a",
+        "android_client_info": {
+          "package_name": "com.example.e_gona"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcuFyDch8uUFMi-j7XLPxu8OTLSDiWb7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
