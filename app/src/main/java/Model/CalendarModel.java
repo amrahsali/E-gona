@@ -1,18 +1,19 @@
 package Model;
 
 public class CalendarModel {
-    public String Name;
+    public String CropName;
     public String Description;
-    public String DatePlanted;
-    public String HarvestDate;
-    public String Status;
+
+    public String CompletionDate;
+    public String Category;
+
 
     public String getName() {
-        return Name;
+        return CropName;
     }
 
     public void setName(String name) {
-        Name = name;
+        CropName = name;
     }
 
     public String getDescription() {
@@ -23,27 +24,7 @@ public class CalendarModel {
         Description = description;
     }
 
-    public String getDatePlanted() {
-        return DatePlanted;
-    }
 
-    public void setDatePlanted(String datePlanted) {
-        DatePlanted = datePlanted;
-    }
 
-    public String getHarvestDate() {
-        return HarvestDate;
-    }
 
-    public void setHarvestDate(String harvestDate) {
-        HarvestDate = harvestDate;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
-    }
 }

@@ -46,9 +46,9 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.name.setText(calendar.get(position).Name);
+        holder.name.setText(calendar.get(position).CropName);
         holder.des.setText(calendar.get(position).Description);
-        holder.days.setText(calendar.get(position).HarvestDate);
+        holder.days.setText(calendar.get(position).CompletionDate);
     }
 
     @Override

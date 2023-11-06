@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.e_gona" />
+                  <option name="mobileSdkAppId" value="1:805417165023:android:4e54250809da8eb587c96a" />
+                  <option name="projectId" value="e-gona-app" />
+                  <option name="projectNumber" value="805417165023" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

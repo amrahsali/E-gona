@@ -3,7 +3,9 @@ package com.example.e_gona;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,6 +30,7 @@ public class Login extends AppCompatActivity {
     private TextView  signup;
     private FirebaseAuth mAuth;
     private ProgressBar loadingPB;
+    SharedPreferences UserEmail;
 
 
     @Override
@@ -45,6 +48,8 @@ public class Login extends AppCompatActivity {
         loadingPB = findViewById(R.id.idPBLoading);
         button = findViewById(R.id.login_btn);
         signup = findViewById(R.id.toSignup);
+
+        UserEmail = getSharedPreferences("myPref", Context.MODE_PRIVATE);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +74,10 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // on below line we are hiding our progress bar.
                             loadingPB.setVisibility(View.GONE);
+                            SharedPreferences.Editor editor = UserEmail.edit();
+                            editor.putString("email_key", email).apply();
                             Toast.makeText(Login.this, "Login Successful..", Toast.LENGTH_SHORT).show();
-                            // on below line we are opening our mainactivity.
+                            // on below line we are o"pening our mainactivity.
                             Intent i = new Intent(Login.this, MainActivity.class);
                             startActivity(i);
                             // requireActivity().finish();
