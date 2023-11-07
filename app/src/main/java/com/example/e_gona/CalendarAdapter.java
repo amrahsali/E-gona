@@ -15,7 +15,7 @@ import Model.CalendarModel;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
 
-    private ArrayList<CalendarModel> calendar;
+     ArrayList<CalendarModel> calendar;
     Context context;
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView name,des,days;
@@ -28,11 +28,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
 
     }
 
-    public void setCalendar(ArrayList<CalendarModel> calendar){
+    public CalendarAdapter(Context context, ArrayList<CalendarModel> calendar) {
+        this.context = context;
         this.calendar = calendar;
     }
-    public CalendarAdapter(Context context){
-        this.context = context;
+
+    public CalendarAdapter(){
+
     }
     @NonNull
     @Override
@@ -46,9 +48,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.name.setText(calendar.get(position).CropName);
-        holder.des.setText(calendar.get(position).Description);
-        holder.days.setText(calendar.get(position).CompletionDate);
+        CalendarModel model = calendar.get(position);
+        holder.name.setText(model.CropName);
+        holder.des.setText(model.Description);
+        holder.days.setText(model.CompletionDate);
     }
 
     @Override
