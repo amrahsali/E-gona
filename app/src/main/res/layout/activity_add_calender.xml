@@ -15,7 +15,7 @@
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ADD CALENDER"
+            android:text="@string/add_calender"
             android:textColor="@color/green"
             android:textSize="16sp"
             android:layout_gravity="center_horizontal"
@@ -37,7 +37,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Crop Name"
+                    android:text="@string/crop_name"
                     android:textColor="@color/green"
                     android:textSize="16sp" />
 
@@ -48,7 +48,7 @@
                     android:backgroundTint="@color/green"
                     android:ems="10"
                     android:foregroundTint="@color/green"
-                    android:hint="tap to write"
+                    android:hint="@string/tap_to_write"
                     android:inputType="text"
                     android:textColor="@color/green"
                     android:textColorLink="@color/green"
@@ -58,7 +58,7 @@
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textColor="@color/green"
                     android:textSize="16sp" />
 
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="tap to write"
+                    android:hint="@string/tap_to_write1"
                     android:inputType="text"
                     android:textColorLink="@color/green"
                     android:textCursorDrawable="@color/green" />
@@ -76,7 +76,7 @@
                     android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Completion date"
+                    android:text="@string/completion_date"
                     android:textColor="@color/green"
                     android:textSize="16sp" />
 
@@ -109,7 +109,7 @@
                             android:id="@+id/textView8"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Category"
+                            android:text="@string/category2"
                             android:textColor="@color/green"
                             android:textSize="16sp" />
 
@@ -118,7 +118,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/green"
-                            android:text="Planting"
+                            android:text="@string/planting"
                             android:textColor="@color/green" />
 
                         <RadioButton
@@ -126,7 +126,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:buttonTint="@color/green"
-                            android:text="Harvesting"
+                            android:text="@string/harvesting"
                             android:textColor="@color/green" />
                     </RadioGroup>
                 </LinearLayout>
@@ -135,7 +135,7 @@
                     android:id="@+id/set_calendar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Set Calendar"
+                    android:text="@string/set_calendar"
                     android:textColor="@color/white" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

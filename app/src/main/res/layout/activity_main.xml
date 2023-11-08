@@ -23,8 +23,8 @@
                 android:id="@+id/profile_item"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:tint="@color/green"
-                app:srcCompat="@drawable/profile" />
+                app:srcCompat="@drawable/profile"
+                app:tint="@color/green" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -35,8 +35,8 @@
                 android:id="@+id/imageView2"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:tint="@color/green"
-                app:srcCompat="@drawable/bell" />
+                app:srcCompat="@drawable/round_chat_24"
+                app:tint="@color/green" />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Are you a farmer?"
+                    android:text="@string/are_you_a_farmer1"
                     android:textColor="@color/white"
                     android:textSize="34sp" />
             </LinearLayout>
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="Categories"
+            android:text="@string/categories1"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -101,8 +101,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:tint="@color/green"
-                        app:srcCompat="@drawable/select" />
+                        app:srcCompat="@drawable/select"
+                        app:tint="@color/green" />
                 </LinearLayout>
 
 
@@ -130,8 +130,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:tint="@color/green"
-                        app:srcCompat="@drawable/lettuce" />
+                        app:srcCompat="@drawable/lettuce"
+                        app:tint="@color/green" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -155,8 +155,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:tint="@color/green"
-                        app:srcCompat="@drawable/harvest" />
+                        app:srcCompat="@drawable/harvest"
+                        app:tint="@color/green" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -182,8 +182,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:padding="5dp"
-                        android:tint="@color/green"
-                        app:srcCompat="@drawable/wheatsack" />
+                        app:srcCompat="@drawable/wheatsack"
+                        app:tint="@color/green" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -195,7 +195,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="Calendar"
+            android:text="@string/calendar1"
             android:textSize="16sp" />
 
         <LinearLayout
