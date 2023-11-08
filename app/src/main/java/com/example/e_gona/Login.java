@@ -49,7 +49,7 @@ public class Login extends AppCompatActivity {
         button = findViewById(R.id.login_btn);
         signup = findViewById(R.id.toSignup);
 
-        UserEmail = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        UserEmail = getSharedPreferences("email", Context.MODE_PRIVATE);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,7 @@ public class Login extends AppCompatActivity {
                             // on below line we are hiding our progress bar.
                             loadingPB.setVisibility(View.GONE);
                             SharedPreferences.Editor editor = UserEmail.edit();
-                            editor.putString("email_key", email).apply();
+                            editor.putString("email_key", email).commit();
                             Toast.makeText(Login.this, "Login Successful..", Toast.LENGTH_SHORT).show();
                             // on below line we are o"pening our mainactivity.
                             Intent i = new Intent(Login.this, MainActivity.class);

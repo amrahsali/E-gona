@@ -14,8 +14,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -47,40 +49,43 @@ public class AddCalenderActivity extends AppCompatActivity {
         plant = (RadioButton) findViewById(R.id.radioPlanting);
         db = FirebaseFirestore.getInstance();
 
-        sharedpreferences = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
         setCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(TextUtils.isEmpty(name.getText())&&TextUtils.isEmpty(desc.getText())){
-                    Toast.makeText(AddCalenderActivity.this, "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddCalenderActivity.this, "data empty", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    String email = sharedpreferences.getString("email_key", null);
+                    String email = sharedpreferences.getString("email_key","");
                     Map<String, Object> calendar = new HashMap<>();
-                    calendar.put("UserId",email);
-                    calendar.put("CropName",name.getText());
-                    calendar.put("Description",desc.getText());
-                    calendar.put("CompletionDate",picker.getYear()+"-"+picker.getMonth()+"-"+picker.getDayOfMonth());
+                    calendar.put("UserId", email);
+                    calendar.put("CropName", name.getText().toString());
+                    calendar.put("Description", desc.getText().toString());
+                    calendar.put("CompletionDate",picker.getDayOfMonth()+"-"+picker.getMonth()+"-"+picker.getYear());
+                    calendar.put("Category",harvest.getText().toString());
                     if(harvest.isActivated()){
                         calendar.put("Category",harvest.getText().toString());
                     }
                     else {
                         calendar.put("Category",plant.getText().toString());
                     }
-                    db.collection("Calendar")
-                            .add(calendar)
-                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                    db.collection("Calendar").document()
+                            .set(calendar)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(AddCalenderActivity.this, "Added Successfully", Toast.LENGTH_SHORT).show();
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(AddCalenderActivity.this,"Calendar Added",Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(AddCalenderActivity.this,"Failed to add Calendar",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AddCalenderActivity.this,"Please try again",Toast.LENGTH_SHORT).show();
                                 }
                             });
+
 
                 }
 

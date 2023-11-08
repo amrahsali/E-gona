@@ -4,16 +4,19 @@ public class CalendarModel {
     public String CropName;
     public String Description;
 
-    public String CompletionDate;
-    public String Category;
+    public CalendarModel(){}
+    public CalendarModel(String CropName,String Description,String CompletionDate){
+        this.CropName = CropName;
+        this.Description = Description;
+        this.CompletionDate = CompletionDate;
+    }
 
-
-    public String getName() {
+    public String getCropName() {
         return CropName;
     }
 
-    public void setName(String name) {
-        CropName = name;
+    public void setCropName(String cropName) {
+        CropName = cropName;
     }
 
     public String getDescription() {
@@ -23,6 +26,20 @@ public class CalendarModel {
     public void setDescription(String description) {
         Description = description;
     }
+
+    public String getCompletionDate() {
+        return CompletionDate;
+    }
+
+    public void setCompletionDate(String completionDate) {
+        CompletionDate = completionDate;
+    }
+
+    public String CompletionDate;
+
+
+
+
 
 
 
