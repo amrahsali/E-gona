@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore db;
     ArrayList<CalendarModel> calendar;
     SharedPreferences sharedpreferences;
+    ProgressDialog progressDialog;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -52,13 +54,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedpreferences = getSharedPreferences("myPref", Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
 
+
+
+        InitialiseProgressbar();
 
         profilebtn = (ImageView) findViewById(R.id.profile_item);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         recyclerView = (RecyclerView) findViewById(R.id.recylerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         recyclerView.hasFixedSize();
         db = FirebaseFirestore.getInstance();
 
@@ -88,18 +93,36 @@ public class MainActivity extends AppCompatActivity {
     private void EventChangeListener() {
         String email = sharedpreferences.getString("email_key", "");
         db.collection("Calendar")
-                .whereEqualTo("UserId", email)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                .whereEqualTo("UserId",email)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        for(DocumentChange dc:value.getDocumentChanges()){
-                            if(dc.getType()==DocumentChange.Type.ADDED){
-                                //calendar.add(dc.getDocument().toObject(CalendarModel.class));
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                CalendarModel c = new CalendarModel();
+                                c.CropName = document.get("CropName").toString();
+                                c.Description = document.get("Description").toString();
+                                c.CompletionDate = document.get("CompletionDate").toString();
+                                calendar.add(c);
+
+                            }
+                            if(progressDialog.isShowing()){
+                                progressDialog.dismiss();
                             }
                             adapter.notifyDataSetChanged();
+
+                        } else {
+                            Toast.makeText(MainActivity.this,"error",Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
 
+    }
+    void InitialiseProgressbar(){
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        progressDialog.setMessage("fetching calendars");
     }
 }
