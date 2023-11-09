@@ -6,12 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +27,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements  AdapterView.OnItemSelectedListener {
 
 
     Button button;
@@ -32,13 +37,29 @@ public class Login extends AppCompatActivity {
     private ProgressBar loadingPB;
     SharedPreferences UserEmail;
 
+    Context context;
+    Resources resources;
+    String[] languages = { "select language", "english", "hausa" };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Spinner spin = findViewById(R.id.spinnerLang);
+        spin.setOnItemSelectedListener(this);
+
+        //Creating the ArrayAdapter instance having the country list
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item, languages);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        spin.setAdapter(aa);
         FirebaseApp.initializeApp(this);
+
+
+
+
 
 
         // initializing all our variables.
@@ -51,6 +72,29 @@ public class Login extends AppCompatActivity {
 
         UserEmail = getSharedPreferences("email", Context.MODE_PRIVATE);
 
+
+        userNameEdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer music = MediaPlayer.create(Login.this, R.raw.imel);
+                music.start();
+            }
+        });
+
+        passwordEdt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer music = MediaPlayer.create(Login.this, R.raw.sahannu);
+                music.start();
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer music = MediaPlayer.create(Login.this, R.raw.kirkira);
+                music.start();
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,4 +165,34 @@ public class Login extends AppCompatActivity {
 
 
 }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+        if (languages[position].equals("hausa")){
+            context = LocaleHelper.setLocale(Login.this, "ha");
+            resources = context.getResources();
+            Intent refresh = new Intent(context, Login.class);
+            Toast.makeText(getApplicationContext(),languages[position] , Toast.LENGTH_SHORT).show();
+            finish();
+            startActivity(refresh);
+        }else if(languages[position].equals("english")){
+            //Toast.makeText( LoginActivity.this, "checkbox is unchecked", Toast.LENGTH_SHORT).show();
+            context = LocaleHelper.setLocale(Login.this, "en");
+            resources = context.getResources();
+            Intent refresh = new Intent(context, Login.class);
+            Toast.makeText(getApplicationContext(),languages[position] , Toast.LENGTH_SHORT).show();
+            finish();
+            startActivity(refresh);
+        }else {
+            Toast.makeText(getApplicationContext(),"languages" , Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        Toast.makeText(getApplicationContext(),"languages" , Toast.LENGTH_SHORT).show();
+
+
+    }
+
+
 }

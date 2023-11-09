@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:paddingTop="10dp"
-            android:text="login"
+            android:text="@string/login"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
                     android:drawableStart="@drawable/ic_sharp_email_24"
                     android:drawablePadding="10dp"
                     android:drawableTint="@color/green"
-                    android:hint="phone"
+                    android:hint="@string/email2"
                     android:inputType="textEmailAddress"
                     android:padding="10dp" />
             </LinearLayout>
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/green"
-                    android:text="log in" />
+                    android:text="@string/log_in" />
 
                 <View
                     android:layout_width="wrap_content"
@@ -113,7 +113,7 @@
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:gravity="center"
-                       android:text="Dont have acount?"
+                       android:text="@string/dont_have_acount"
                        android:textColor="@color/black"
                        android:textSize="15sp" />
 
@@ -122,7 +122,7 @@
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
                        android:gravity="center"
-                       android:text="signup here"
+                       android:text="@string/signup_here"
                        android:textColor="@color/black"
                        android:textSize="15sp" />
 
@@ -133,6 +133,41 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:paddingTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="change language"
+            android:textSize="15sp" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--Spinner widget-->
+            <Spinner
+                android:id="@+id/spinnerLang"
+                android:layout_height="50dp"
+                android:layout_width="160dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
 
 
     <!--progress-bar for loading indicator-->
